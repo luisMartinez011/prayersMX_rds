@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_14_021521) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_14_040908) do
   create_table "productos", force: :cascade do |t|
     t.string "nombre"
     t.float "precio"
@@ -39,6 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_14_021521) do
     t.text "tokens"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role", default: 0
     t.index ["confirmation_token"], name: "index_usuarios_on_confirmation_token", unique: true
     t.index ["email"], name: "index_usuarios_on_email", unique: true
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
