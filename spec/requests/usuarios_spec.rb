@@ -1,19 +1,14 @@
 require "swagger_helper"
+require "rails_helper"
 
-newUsuario = FactoryBot.build(:usuario, name: "jinsang")
-usuario_with_user_role = FactoryBot.create(:usuario, role: "usuario")
-class UsuarioInfo
-  def usuario_id
-    return $usuarioId
-  end
-  def token
-    return $usuarioToken
-  end
-end
+newUsuario = FactoryBot.attributes_for(:usuario)
 
 RSpec.describe "usuarios", type: :request do
-  path "/usuarios/signup" do
-    post("signup usuario") do
+  let! (:new_usuario) {
+    newUsuario
+  }
+  path "/auth/" do
+    post("sign up usuario") do
       tags "Usuario"
       consumes "application/json"
       parameter name: :new_usuario,
@@ -29,13 +24,15 @@ RSpec.describe "usuarios", type: :request do
                     },
                     name: {
                       type: :string
+                    },
+                    role: {
+                      type: :string
                     }
-                  },
-                  required: %w[email password name]
+                  }
                 }
 
       response(200, "successful") do
-        let(:new_usuario) { newUsuario }
+        newUsuario
         run_test!
       end
 
@@ -46,10 +43,11 @@ RSpec.describe "usuarios", type: :request do
     end
   end
 
-  path "/usuarios/login" do
-    post("login usuario") do
+  path "/auth/sign_in" do
+    post("sign in usuario") do
       tags "Usuario"
       consumes "application/json"
+
       parameter name: :new_usuario,
                 in: :body,
                 schema: {
@@ -60,19 +58,22 @@ RSpec.describe "usuarios", type: :request do
                     },
                     password: {
                       type: :string
+                    },
+                    name: {
+                      type: :string
+                    },
+                    role: {
+                      type: :string
                     }
-                  },
-                  required: %w[email password]
+                  }
                 }
 
       response(200, "successful") do
-        let(:new_usuario) { newUsuario }
+        newUsuario
         run_test! do |response|
           data = JSON.parse(response.body)
 
-          $usuarioToken = data["token"]
-          $usuarioId = assigns(:usuario).id
-          expect(data["nombre"]).to eq("jinsang")
+          usuarioToken = data["Authorization"]
         end
       end
     end
