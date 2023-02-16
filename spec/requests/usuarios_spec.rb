@@ -3,6 +3,12 @@ require "rails_helper"
 
 newUsuario = FactoryBot.attributes_for(:usuario)
 
+class UsuarioInfo
+  def token
+    return $usuarioToken
+  end
+end
+
 RSpec.describe "usuarios", type: :request do
   let! (:new_usuario) {
     newUsuario
@@ -73,7 +79,7 @@ RSpec.describe "usuarios", type: :request do
         run_test! do |response|
           data = JSON.parse(response.body)
 
-          usuarioToken = data["Authorization"]
+          $usuarioToken = data["Authorization"]
         end
       end
     end
