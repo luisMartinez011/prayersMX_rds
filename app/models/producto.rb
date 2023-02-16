@@ -1,3 +1,3 @@
 class Producto < ApplicationRecord
-  belongs_to :usuario, optional: true
+  has_many :ordene
 end

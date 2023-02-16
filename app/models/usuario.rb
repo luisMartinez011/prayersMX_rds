@@ -12,6 +12,4 @@ class Usuario < ActiveRecord::Base
          :validatable
   include DeviseTokenAuth::Concerns::User
   enum role: { usuario: 0, admin: 1 }, _prefix: true
-
-  has_one :producto
 end

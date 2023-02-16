@@ -10,14 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_16_002151) do
-  create_table "ordenes", force: :cascade do |t|
+ActiveRecord::Schema[7.0].define(version: 2023_02_16_031824) do
+  create_table "carritos", force: :cascade do |t|
     t.string "total"
-    t.string "Float"
-    t.string "cantidad"
-    t.string "Integer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "compras", force: :cascade do |t|
+    t.string "total"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ordenes", force: :cascade do |t|
+    t.string "total"
+    t.string "cantidad"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "carrito_id"
+    t.integer "producto_id"
+    t.index ["carrito_id"], name: "index_ordenes_on_carrito_id"
+    t.index ["producto_id"], name: "index_ordenes_on_producto_id"
   end
 
   create_table "productos", force: :cascade do |t|
@@ -28,7 +42,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_16_002151) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "cantidad"
-    t.integer "usuario_id"
   end
 
   create_table "usuarios", force: :cascade do |t|
@@ -51,10 +64,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_16_002151) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "role", default: 0
+    t.integer "usuario_id"
     t.index ["confirmation_token"], name: "index_usuarios_on_confirmation_token", unique: true
     t.index ["email"], name: "index_usuarios_on_email", unique: true
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_usuarios_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "ordenes", "carritos"
+  add_foreign_key "ordenes", "productos"
 end
