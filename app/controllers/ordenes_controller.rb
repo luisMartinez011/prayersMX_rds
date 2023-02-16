@@ -1,5 +1,5 @@
 class OrdenesController < ApplicationController
-  before_action :set_ordene, only: %i[ show update destroy ]
+  before_action :set_ordene, only: %i[show update destroy]
 
   # GET /ordenes
   def index
@@ -39,13 +39,19 @@ class OrdenesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_ordene
-      @ordene = Ordene.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def ordene_params
-      params.require(:ordene).permit(:total, :Float, :cantidad, :Integer)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  #
+  def set_producto
+    @producto = Producto.find(params[:id_producto])
+  end
+
+  def set_ordene
+    @ordene = Ordene.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def ordene_params
+    params.require(:ordene).permit(:cantidad, :id_producto, :id_carrito)
+  end
 end

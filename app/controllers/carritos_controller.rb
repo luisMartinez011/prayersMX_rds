@@ -1,5 +1,5 @@
 class CarritosController < ApplicationController
-  before_action :set_carrito, only: %i[ show update destroy ]
+  before_action :set_carrito, only: %i[show update destroy]
 
   # GET /carritos
   def index
@@ -39,13 +39,14 @@ class CarritosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_carrito
-      @carrito = Carrito.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def carrito_params
-      params.require(:carrito).permit(:total, :Float)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_carrito
+    @carrito = Carrito.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def carrito_params
+    params.require(:carrito).permit(:total)
+  end
 end
