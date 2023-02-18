@@ -20,21 +20,7 @@ RSpec.describe "usuarios", type: :request do
       parameter name: :new_usuario,
                 in: :body,
                 schema: {
-                  type: :object,
-                  properties: {
-                    email: {
-                      type: :string
-                    },
-                    password: {
-                      type: :string
-                    },
-                    name: {
-                      type: :string
-                    },
-                    role: {
-                      type: :string
-                    }
-                  }
+                  "$ref" => "#/components/schemas/usuario"
                 }
 
       response(200, "successful") do
@@ -57,21 +43,7 @@ RSpec.describe "usuarios", type: :request do
       parameter name: :new_usuario,
                 in: :body,
                 schema: {
-                  type: :object,
-                  properties: {
-                    email: {
-                      type: :string
-                    },
-                    password: {
-                      type: :string
-                    },
-                    name: {
-                      type: :string
-                    },
-                    role: {
-                      type: :string
-                    }
-                  }
+                  "$ref" => "#/components/schemas/usuario"
                 }
 
       response(200, "successful") do

@@ -21,7 +21,7 @@ RSpec.describe "productos", type: :request do
     post("create producto") do
       tags "Producto"
       consumes "application/json"
-      security [{ bearer_auth: [] }]
+      #security [{ bearer_auth: [] }]
       parameter name: :producto,
                 in: :body,
                 schema: {
@@ -37,6 +37,7 @@ RSpec.describe "productos", type: :request do
   end
 
   path "/productos/{id}" do
+    before(:all) { @productoPrueba = FactoryBot.create(:producto) }
     parameter name: "id",
               in: :path,
               type: :string,
@@ -46,8 +47,7 @@ RSpec.describe "productos", type: :request do
       tags "Producto"
       produces "application/json"
       response(200, "successful") do
-        productoPrueba = FactoryBot.create(:producto)
-        let(:id) { productoPrueba.id }
+        let(:id) { @productoPrueba.id }
 
         run_test!
       end
@@ -58,8 +58,7 @@ RSpec.describe "productos", type: :request do
       consumes "application/json"
       parameter name: :update_producto, in: :body
       response(200, "successful") do
-        productoPrueba = FactoryBot.create(:producto)
-        let(:id) { productoPrueba.id }
+        let(:id) { @productoPrueba.id }
         let(:update_producto) { FactoryBot.build(:producto) }
         run_test!
       end
@@ -70,8 +69,7 @@ RSpec.describe "productos", type: :request do
       consumes "application/json"
       parameter name: :update_producto, in: :body
       response(200, "successful") do
-        productoPrueba = FactoryBot.create(:producto)
-        let(:id) { productoPrueba.id }
+        let(:id) { @productoPrueba.id }
         let(:update_producto) { FactoryBot.build(:producto) }
         run_test!
       end
@@ -81,8 +79,8 @@ RSpec.describe "productos", type: :request do
       tags "Producto"
       consumes "application/json"
       response(204, "successful") do
-        # productoPrueba = FactoryBot.create(:producto)
-        let(:id) { 2 }
+        let(:id) { @productoPrueba.id }
+        let(:update_producto) { FactoryBot.build(:producto) }
 
         run_test!
       end

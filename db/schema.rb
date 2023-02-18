@@ -10,17 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_16_031824) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_18_023023) do
   create_table "carritos", force: :cascade do |t|
     t.string "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "usuario_id"
+    t.index ["usuario_id"], name: "index_carritos_on_usuario_id"
   end
 
   create_table "compras", force: :cascade do |t|
     t.string "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "usuario_id"
+    t.index ["usuario_id"], name: "index_compras_on_usuario_id"
   end
 
   create_table "ordenes", force: :cascade do |t|
@@ -71,6 +75,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_16_031824) do
     t.index ["uid", "provider"], name: "index_usuarios_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "carritos", "usuarios"
+  add_foreign_key "compras", "usuarios"
   add_foreign_key "ordenes", "carritos"
   add_foreign_key "ordenes", "productos"
 end

@@ -34,8 +34,14 @@ class CarritosController < ApplicationController
   end
 
   # DELETE /carritos/1
+  # Empty your carrito not destroy the carrito
   def destroy
-    @carrito.destroy
+    if @carrito.ordenes.exists?
+      @compra.ordenes << @carrito.ordenes
+      @carrito.destroy
+    else
+      render json: "Carrito is already empty", status: :unprocessable_entity
+    end
   end
 
   private
@@ -45,8 +51,8 @@ class CarritosController < ApplicationController
     @carrito = Carrito.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
+  #Only allow a list of trusted parameters through.
   def carrito_params
-    params.require(:carrito).permit(:total)
+    params.require(:carrito).permit(:usuario_id)
   end
 end

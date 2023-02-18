@@ -43,6 +43,9 @@ RSpec.configure do |config|
               name: {
                 type: :string
               },
+              role: {
+                type: :string
+              },
               carrito: {
                 "$ref" => "#/components/schemas/carrito"
               },
@@ -93,18 +96,21 @@ RSpec.configure do |config|
               orders: {
                 type: :array,
                 items: {
-                  "$ref" => "#/components/schemas/order"
+                  "$ref" => "#/components/schemas/ordene"
                 }
               }
             }
           },
-          order: {
+          ordene: {
             type: :object,
             properties: {
-              total: {
-                type: :number
-              },
               cantidad: {
+                type: :integer
+              },
+              producto_id: {
+                type: :integer
+              },
+              usuario_id: {
                 type: :integer
               },
               producto: {

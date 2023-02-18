@@ -1,5 +1,5 @@
 class ComprasController < ApplicationController
-  before_action :set_compra, only: %i[ show update destroy ]
+  before_action :set_compra, only: %i[show update destroy]
 
   # GET /compras
   def index
@@ -39,13 +39,14 @@ class ComprasController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_compra
-      @compra = Compra.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def compra_params
-      params.require(:compra).permit(:total, :Float)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_compra
+    @compra = Compra.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def compra_params
+    params.require(:compra).permit(:total)
+  end
 end
