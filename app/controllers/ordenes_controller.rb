@@ -1,7 +1,7 @@
 class OrdenesController < ApplicationController
   before_action :set_ordene, only: %i[show update destroy]
   before_action :set_producto, only: %i[create]
-  before_action :set_ordene, only: %i[show update destroy create]
+  before_action :set_carrito, only: %i[create]
 
   # GET /ordenes
   def index
@@ -19,12 +19,12 @@ class OrdenesController < ApplicationController
   def create
     @ordene = Ordene.new(ordene_params)
 
-    @ordene.producto_id = @producto.id
-    @ordene.carrito_id = @carrito.id
+    @ordene.producto_id << @producto.id
 
     @ordene.total = @ordene.cantidad * @producto.precio
 
     if @ordene.save
+      @carrito.ordenes << @ordene
       @carrito.total = @carrito.ordenes.sum("total")
       render json: @ordene, status: :created, location: @ordene
     else

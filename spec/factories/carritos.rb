@@ -10,7 +10,7 @@ FactoryBot.define do
       # evaluator, which stores all values from the factory, including transient
       # attributes; `create_list`'s second argument is the number of records
       # to create and we make sure the user is associated properly to the post
-      after(:build) do |carrito, evaluator|
+      after(:create) do |carrito, evaluator|
         create_list(:ordene, 3, carrito: carrito)
         carrito.reload
       end

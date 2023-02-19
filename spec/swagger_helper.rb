@@ -61,6 +61,9 @@ RSpec.configure do |config|
               total: {
                 type: :number
               },
+              usuario_id: {
+                type: :integer
+              },
               orders: {
                 type: :array,
                 items: {

@@ -1,6 +1,7 @@
 require "swagger_helper"
 
 RSpec.describe "compras", type: :request do
+  before(:all) { @compraPrueba = FactoryBot.create(:compra_with_orders) }
   path "/compras" do
     get("list compras") do
       response(200, "successful") do
@@ -36,15 +37,8 @@ RSpec.describe "compras", type: :request do
 
     get("show compra") do
       response(200, "successful") do
-        let(:id) { "123" }
+        let(:id) { @compraPrueba.id }
 
-        after do |example|
-          example.metadata[:response][:content] = {
-            "application/json" => {
-              example: JSON.parse(response.body, symbolize_names: true)
-            }
-          }
-        end
         run_test!
       end
     end

@@ -27,8 +27,8 @@ RSpec.describe "ordenes", type: :request do
       response(201, "successful") do
         let(:ordene) do
           {
-            producto_id: 1,
-            usuario_id: @ordenPrueba.usuar.id,
+            producto_id: @ordenPrueba.producto_id,
+            usuario_id: @ordenPrueba.carrito.usuario_id,
             cantidad: Faker::Number.number(digits: 2)
           }
         end

@@ -1,5 +1,6 @@
 class CarritosController < ApplicationController
   before_action :set_carrito, only: %i[show update destroy]
+  before_action :set_compra, only: %i[destroy]
 
   # GET /carritos
   def index
@@ -38,7 +39,8 @@ class CarritosController < ApplicationController
   def destroy
     if @carrito.ordenes.exists?
       @compra.ordenes << @carrito.ordenes
-      @carrito.destroy
+      @compra.total = @compra.ordenes.sum("total")
+      @carrito.ordenes = []
     else
       render json: "Carrito is already empty", status: :unprocessable_entity
     end
@@ -47,6 +49,10 @@ class CarritosController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
+  def set_compra
+    @compra = Carrito.find_or_create_by(usuario_id: params[:usuario_id])
+  end
+
   def set_carrito
     @carrito = Carrito.find(params[:id])
   end
