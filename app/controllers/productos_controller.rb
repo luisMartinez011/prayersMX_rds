@@ -1,6 +1,7 @@
 class ProductosController < ApplicationController
   before_action :set_producto, only: %i[show update destroy]
-  #load_and_authorize_resource
+  before_action :authenticate_usuario!, except: %i[index show]
+  load_and_authorize_resource
   # GET /productos
   def index
     @productos = Producto.all

@@ -1,7 +1,8 @@
 class CarritosController < ApplicationController
   before_action :set_carrito, only: %i[show update destroy]
   before_action :set_compra, only: %i[destroy]
-
+  before_action :authenticate_usuario!
+  load_and_authorize_resource
   # GET /carritos
   def index
     @carritos = Carrito.all

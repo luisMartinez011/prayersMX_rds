@@ -1,6 +1,7 @@
 class ComprasController < ApplicationController
   before_action :set_compra, only: %i[show update destroy]
-
+  before_action :authenticate_usuario!
+  load_and_authorize_resource
   # GET /compras
   def index
     @compras = Compra.all

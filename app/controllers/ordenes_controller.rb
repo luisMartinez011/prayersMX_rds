@@ -1,7 +1,9 @@
 class OrdenesController < ApplicationController
   before_action :set_ordene, only: %i[show update destroy]
-  before_action :set_producto, only: %i[create]
+  before_action :set_producto, only: :create
   before_action :set_carrito, only: %i[create]
+  before_action :authenticate_usuario!
+  load_and_authorize_resource
 
   # GET /ordenes
   def index

@@ -1,5 +1,7 @@
 class UsuariosController < ApplicationController
   before_action :set_usuario, only: %i[show destroy]
+  before_action :authenticate_usuario!
+  load_and_authorize_resource
   # GET /usuarios
   def index
     @usuarios = Usuario.all

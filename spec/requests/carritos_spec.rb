@@ -5,6 +5,8 @@ RSpec.describe "carritos", type: :request do
 
   path "/carritos" do
     get("list carritos") do
+      tags "Carritos"
+      produces "application/json"
       response(200, "successful") do
         after do |example|
           example.metadata[:response][:content] = {
@@ -36,6 +38,8 @@ RSpec.describe "carritos", type: :request do
     parameter name: "id", in: :path, type: :string, description: "id"
 
     get("show carrito") do
+      tags "Carritos"
+      produces "application/json"
       response(200, "successful") do
         let(:id) { @carritoPrueba.id }
 
@@ -44,7 +48,7 @@ RSpec.describe "carritos", type: :request do
     end
 
     delete("vacia el carrito y pasa las ordenes del carrito a compras") do
-      tags "Producto"
+      tags "Carritos"
       consumes "application/json"
       #security [{ bearer_auth: [] }]
       parameter name: :usuario_id,

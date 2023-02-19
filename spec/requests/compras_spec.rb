@@ -4,6 +4,8 @@ RSpec.describe "compras", type: :request do
   before(:all) { @compraPrueba = FactoryBot.create(:compra_with_orders) }
   path "/compras" do
     get("list compras") do
+      tags "Compras"
+      produces "application/json"
       response(200, "successful") do
         after do |example|
           example.metadata[:response][:content] = {
@@ -36,6 +38,8 @@ RSpec.describe "compras", type: :request do
     parameter name: "id", in: :path, type: :string, description: "id"
 
     get("show compra") do
+      tags "Compras"
+      produces "application/json"
       response(200, "successful") do
         let(:id) { @compraPrueba.id }
 

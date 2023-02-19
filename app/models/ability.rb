@@ -4,12 +4,15 @@ class Ability
   include CanCan::Ability
 
   def initialize(usuario)
-    usuario ||= Usuario.new
-
     can :read, Producto
     return unless usuario.present?
 
     can :read, Producto
+    can :show, Usuario
+    can :manage, Ordene
+    can :show, Compra
+    can %i[show destroy], Carrito
+
     return unless usuario.role_admin?
     can :manage, :all
     # Define abilities for the user here. For example:

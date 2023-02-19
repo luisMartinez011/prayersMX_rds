@@ -67,7 +67,7 @@ RSpec.configure do |config|
               orders: {
                 type: :array,
                 items: {
-                  "$ref" => "#/components/schemas/order"
+                  "$ref" => "#/components/schemas/ordene"
                 }
               }
             }

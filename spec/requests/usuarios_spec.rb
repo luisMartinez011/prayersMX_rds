@@ -56,4 +56,46 @@ RSpec.describe "usuarios", type: :request do
       end
     end
   end
+
+  path "/usuarios" do
+    get("list usuarios") do
+      tags "Usuario"
+      produces "application/json"
+      response(200, "successful") do
+        #subject(:ability) { Ability.new(user) }
+        # let(:user) { nil }
+        # it { is_expected.to be_able_to(:manage, Producto.new) }
+
+        run_test!
+      end
+    end
+  end
+
+  path "/usuarios/{id}" do
+    before(:all) { @usuarioPrueba = FactoryBot.create(:usuario) }
+    parameter name: "id",
+              in: :path,
+              type: :string,
+              description: "id del producto"
+
+    get("show one usuario") do
+      tags "Usuario"
+      produces "application/json"
+      response(200, "successful") do
+        let(:id) { @usuarioPrueba.id }
+
+        run_test!
+      end
+    end
+
+    delete("delete producto") do
+      tags "Usuario"
+      consumes "application/json"
+      response(204, "successful") do
+        let(:id) { @usuarioPrueba.id }
+
+        run_test!
+      end
+    end
+  end
 end

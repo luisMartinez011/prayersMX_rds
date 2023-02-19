@@ -4,7 +4,7 @@ RSpec.describe "ordenes", type: :request do
   before(:all) { @ordenPrueba = FactoryBot.create(:ordene) }
   path "/ordenes" do
     get("list ordenes") do
-      tags "Producto"
+      tags "Orden"
       produces "application/json"
       #security [{ bearer_auth: [] }]
       parameter name: :ordene,
@@ -16,7 +16,7 @@ RSpec.describe "ordenes", type: :request do
     end
 
     post("create orden and assigns it to a carrito") do
-      tags "Producto"
+      tags "Orden"
       consumes "application/json"
       #security [{ bearer_auth: [] }]
       parameter name: :ordene,
@@ -48,7 +48,7 @@ RSpec.describe "ordenes", type: :request do
               description: "id de la orden"
 
     get("show orden") do
-      tags "Producto"
+      tags "Orden"
       produces "application/json"
       #security [{ bearer_auth: [] }]
       parameter name: :ordene,
@@ -71,7 +71,7 @@ RSpec.describe "ordenes", type: :request do
     end
 
     patch("update orden") do
-      tags "Producto"
+      tags "Orden"
       consumes "application/json"
       #security [{ bearer_auth: [] }]
       parameter name: :ordene,
@@ -95,7 +95,7 @@ RSpec.describe "ordenes", type: :request do
     end
 
     put("update ordene") do
-      tags "Producto"
+      tags "Orden"
       consumes "application/json"
       #security [{ bearer_auth: [] }]
       parameter name: :ordene,
@@ -119,7 +119,7 @@ RSpec.describe "ordenes", type: :request do
     end
 
     delete("delete ordene") do
-      tags "Producto"
+      tags "Orden"
       consumes "application/json"
       #security [{ bearer_auth: [] }]
       response(204, "successful") do
