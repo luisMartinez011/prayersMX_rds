@@ -63,77 +63,6 @@ paths:
       responses:
         '200':
           description: successful
-  "/ordenes":
-    get:
-      summary: list ordenes
-      tags:
-      - Orden
-      parameters: []
-      responses:
-        '200':
-          description: successful
-    post:
-      summary: create orden and assigns it to a carrito
-      tags:
-      - Orden
-      parameters: []
-      responses:
-        '201':
-          description: successful
-      requestBody:
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/ordene"
-  "/ordenes/{id}":
-    parameters:
-    - name: id
-      in: path
-      description: id de la orden
-      required: true
-      schema:
-        type: string
-    get:
-      summary: show orden
-      tags:
-      - Orden
-      parameters: []
-      responses:
-        '200':
-          description: successful
-    patch:
-      summary: update orden
-      tags:
-      - Orden
-      parameters: []
-      responses:
-        '200':
-          description: successful
-      requestBody:
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/ordene"
-    put:
-      summary: update ordene
-      tags:
-      - Orden
-      parameters: []
-      responses:
-        '200':
-          description: successful
-      requestBody:
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/ordene"
-    delete:
-      summary: delete ordene
-      tags:
-      - Orden
-      responses:
-        '204':
-          description: successful
   "/auth/":
     post:
       summary: sign up usuario
@@ -167,6 +96,8 @@ paths:
       summary: list usuarios
       tags:
       - Usuario
+      security:
+      - bearer_auth: []
       responses:
         '200':
           description: successful
@@ -182,6 +113,8 @@ paths:
       summary: show one usuario
       tags:
       - Usuario
+      security:
+      - bearer_auth: []
       responses:
         '200':
           description: successful
@@ -189,6 +122,91 @@ paths:
       summary: delete producto
       tags:
       - Usuario
+      security:
+      - bearer_auth: []
+      responses:
+        '204':
+          description: successful
+  "/ordenes":
+    get:
+      summary: list ordenes
+      tags:
+      - Orden
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create orden and assigns it to a carrito
+      tags:
+      - Orden
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '201':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/ordene"
+  "/ordenes/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id de la orden
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show orden
+      tags:
+      - Orden
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update orden
+      tags:
+      - Orden
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/ordene"
+    put:
+      summary: update ordene
+      tags:
+      - Orden
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/ordene"
+    delete:
+      summary: delete ordene
+      tags:
+      - Orden
+      security:
+      - bearer_auth: []
       responses:
         '204':
           description: successful
@@ -204,6 +222,8 @@ paths:
       summary: create producto
       tags:
       - Producto
+      security:
+      - bearer_auth: []
       parameters: []
       responses:
         '201':
@@ -225,6 +245,8 @@ paths:
       summary: show one producto
       tags:
       - Producto
+      security:
+      - bearer_auth: []
       responses:
         '200':
           description: successful
@@ -232,6 +254,8 @@ paths:
       summary: update producto
       tags:
       - Producto
+      security:
+      - bearer_auth: []
       parameters: []
       responses:
         '200':
@@ -240,6 +264,8 @@ paths:
       summary: update producto
       tags:
       - Producto
+      security:
+      - bearer_auth: []
       parameters: []
       responses:
         '200':
@@ -248,6 +274,8 @@ paths:
       summary: delete producto
       tags:
       - Producto
+      security:
+      - bearer_auth: []
       responses:
         '204':
           description: successful
@@ -325,7 +353,7 @@ components:
         producto:
           "$ref": "#/components/schemas/producto"
 servers:
-- url: http://{defaultHost}
+- url: https://secure-lowlands-54066.herokuapp.com/
   variables:
     defaultHost:
       default: localhost:3000
