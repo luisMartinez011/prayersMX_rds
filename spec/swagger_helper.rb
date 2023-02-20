@@ -125,7 +125,7 @@ RSpec.configure do |config|
       },
       servers: [
         {
-          url: "http://{defaultHost}",
+          url: "https://secure-lowlands-54066.herokuapp.com/",
           variables: {
             defaultHost: {
               default: "localhost:3000"
