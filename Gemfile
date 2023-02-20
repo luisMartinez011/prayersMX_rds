@@ -9,6 +9,9 @@ gem "rails", "~> 7.0.4", ">= 7.0.4.2"
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", "~> 1.4"
 
+#database
+gem 'pg', '~> 1.4', '>= 1.4.5'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
@@ -50,6 +53,7 @@ end
 
 group :test do
   gem 'database_cleaner-active_record'
+  gem 'faker'
 end
 
 # swagger open api
@@ -57,8 +61,10 @@ gem 'rspec-rails'
 gem 'rswag'
 
 gem 'email_validator'
-gem 'faker'
+
 gem "figaro"
 gem "ruby-lsp", "~> 0.3.6", :group => :development
 gem 'cancancan', '~> 3.4'
 gem 'devise_token_auth'
+
+

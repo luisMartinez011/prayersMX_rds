@@ -61,7 +61,9 @@ RSpec.describe "usuarios", type: :request do
     get("list usuarios") do
       tags "Usuario"
       produces "application/json"
+      security [{ bearer_auth: [] }]
       response(200, "successful") do
+        let(:Authorization) { "Bearer #{$usuarioToken}" }
         #subject(:ability) { Ability.new(user) }
         # let(:user) { nil }
         # it { is_expected.to be_able_to(:manage, Producto.new) }
@@ -81,7 +83,9 @@ RSpec.describe "usuarios", type: :request do
     get("show one usuario") do
       tags "Usuario"
       produces "application/json"
+      security [{ bearer_auth: [] }]
       response(200, "successful") do
+        let(:Authorization) { "Bearer #{$usuarioToken}" }
         let(:id) { @usuarioPrueba.id }
 
         run_test!
@@ -91,7 +95,9 @@ RSpec.describe "usuarios", type: :request do
     delete("delete producto") do
       tags "Usuario"
       consumes "application/json"
+      security [{ bearer_auth: [] }]
       response(204, "successful") do
+        let(:Authorization) { "Bearer #{$usuarioToken}" }
         let(:id) { @usuarioPrueba.id }
 
         run_test!

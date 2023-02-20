@@ -21,7 +21,7 @@ RSpec.describe "productos", type: :request do
     post("create producto") do
       tags "Producto"
       consumes "application/json"
-      #security [{ bearer_auth: [] }]
+      security [{ bearer_auth: [] }]
       parameter name: :producto,
                 in: :body,
                 schema: {
@@ -46,7 +46,9 @@ RSpec.describe "productos", type: :request do
     get("show one producto") do
       tags "Producto"
       produces "application/json"
+      security [{ bearer_auth: [] }]
       response(200, "successful") do
+        let(:Authorization) { "Bearer #{usuarioInfo.token}" }
         let(:id) { @productoPrueba.id }
 
         run_test!
@@ -56,8 +58,10 @@ RSpec.describe "productos", type: :request do
     patch("update producto") do
       tags "Producto"
       consumes "application/json"
+      security [{ bearer_auth: [] }]
       parameter name: :update_producto, in: :body
       response(200, "successful") do
+        let(:Authorization) { "Bearer #{usuarioInfo.token}" }
         let(:id) { @productoPrueba.id }
         let(:update_producto) { FactoryBot.build(:producto) }
         run_test!
@@ -67,8 +71,10 @@ RSpec.describe "productos", type: :request do
     put("update producto") do
       tags "Producto"
       consumes "application/json"
+      security [{ bearer_auth: [] }]
       parameter name: :update_producto, in: :body
       response(200, "successful") do
+        let(:Authorization) { "Bearer #{usuarioInfo.token}" }
         let(:id) { @productoPrueba.id }
         let(:update_producto) { FactoryBot.build(:producto) }
         run_test!
@@ -78,7 +84,9 @@ RSpec.describe "productos", type: :request do
     delete("delete producto") do
       tags "Producto"
       consumes "application/json"
+      security [{ bearer_auth: [] }]
       response(204, "successful") do
+        let(:Authorization) { "Bearer #{usuarioInfo.token}" }
         let(:id) { @productoPrueba.id }
         let(:update_producto) { FactoryBot.build(:producto) }
 

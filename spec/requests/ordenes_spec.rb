@@ -1,4 +1,6 @@
 require "swagger_helper"
+require "requests/usuarios_spec"
+usuarioInfo = UsuarioInfo.new
 
 RSpec.describe "ordenes", type: :request do
   before(:all) { @ordenPrueba = FactoryBot.create(:ordene) }
@@ -6,25 +8,29 @@ RSpec.describe "ordenes", type: :request do
     get("list ordenes") do
       tags "Orden"
       produces "application/json"
-      #security [{ bearer_auth: [] }]
+      security [{ bearer_auth: [] }]
       parameter name: :ordene,
                 in: :body,
                 schema: {
                   "$ref" => "#/components/schemas/ordene"
                 }
-      response(200, "successful") { run_test! }
+      response(200, "successful") do
+        let(:Authorization) { "Bearer #{usuarioInfo.token}" }
+        run_test!
+      end
     end
 
     post("create orden and assigns it to a carrito") do
       tags "Orden"
       consumes "application/json"
-      #security [{ bearer_auth: [] }]
+      security [{ bearer_auth: [] }]
       parameter name: :ordene,
                 in: :body,
                 schema: {
                   "$ref" => "#/components/schemas/ordene"
                 }
       response(201, "successful") do
+        let(:Authorization) { "Bearer #{usuarioInfo.token}" }
         let(:ordene) do
           {
             producto_id: @ordenPrueba.producto_id,
@@ -50,13 +56,14 @@ RSpec.describe "ordenes", type: :request do
     get("show orden") do
       tags "Orden"
       produces "application/json"
-      #security [{ bearer_auth: [] }]
+      security [{ bearer_auth: [] }]
       parameter name: :ordene,
                 in: :body,
                 schema: {
                   "$ref" => "#/components/schemas/ordene"
                 }
       response(200, "successful") do
+        let(:Authorization) { "Bearer #{usuarioInfo.token}" }
         let(:id) { @ordenPrueba.id }
 
         after do |example|
@@ -73,13 +80,14 @@ RSpec.describe "ordenes", type: :request do
     patch("update orden") do
       tags "Orden"
       consumes "application/json"
-      #security [{ bearer_auth: [] }]
+      security [{ bearer_auth: [] }]
       parameter name: :ordene,
                 in: :body,
                 schema: {
                   "$ref" => "#/components/schemas/ordene"
                 }
       response(200, "successful") do
+        let(:Authorization) { "Bearer #{usuarioInfo.token}" }
         let(:id) { @ordenPrueba.id }
         let(:ordene) { FactoryBot.build(:ordene) }
 
@@ -97,13 +105,14 @@ RSpec.describe "ordenes", type: :request do
     put("update ordene") do
       tags "Orden"
       consumes "application/json"
-      #security [{ bearer_auth: [] }]
+      security [{ bearer_auth: [] }]
       parameter name: :ordene,
                 in: :body,
                 schema: {
                   "$ref" => "#/components/schemas/ordene"
                 }
       response(200, "successful") do
+        let(:Authorization) { "Bearer #{usuarioInfo.token}" }
         let(:id) { @ordenPrueba.id }
         let(:ordene) { FactoryBot.build(:ordene) }
 
@@ -121,8 +130,9 @@ RSpec.describe "ordenes", type: :request do
     delete("delete ordene") do
       tags "Orden"
       consumes "application/json"
-      #security [{ bearer_auth: [] }]
+      security [{ bearer_auth: [] }]
       response(204, "successful") do
+        let(:Authorization) { "Bearer #{usuarioInfo.token}" }
         let(:id) { @ordenPrueba.id }
 
         run_test!
