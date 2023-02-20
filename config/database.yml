@@ -9,19 +9,22 @@ default: &default
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  username: postgres
-  password: root
+  host: <%= ENV['host'] %>
+  port: <%= ENV['port'] %>
+  user: <%= ENV['user'] %>
+  password: <%= ENV['password'] %>
 
 development:
   <<: *default
-  database: prayers_development
+  database: <%= ENV['database'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: prayers_test
+  database: <%= ENV['database'] %>
 
 production:
-  database: prayers_production
+  <<: *default
+  database: <%= ENV['database'] %>
