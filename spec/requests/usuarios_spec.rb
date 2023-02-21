@@ -80,7 +80,7 @@ RSpec.describe "usuarios", type: :request do
               type: :string,
               description: "id del producto"
 
-    get("show one usuario") do
+    get("show one usuario and info related") do
       tags "Usuario"
       produces "application/json"
       security [{ bearer_auth: [] }]
@@ -92,7 +92,7 @@ RSpec.describe "usuarios", type: :request do
       end
     end
 
-    delete("delete producto") do
+    delete("delete usuario") do
       tags "Usuario"
       consumes "application/json"
       security [{ bearer_auth: [] }]

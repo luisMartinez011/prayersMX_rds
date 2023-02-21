@@ -1,12 +1,16 @@
 require "swagger_helper"
+require "requests/usuarios_spec"
 
+usuarioInfo = UsuarioInfo.new
 RSpec.describe "compras", type: :request do
   before(:all) { @compraPrueba = FactoryBot.create(:compra_with_orders) }
   path "/compras" do
     get("list compras") do
       tags "Compras"
       produces "application/json"
+      security [{ bearer_auth: [] }]
       response(200, "successful") do
+        let(:Authorization) { "Bearer #{usuarioInfo.token}" }
         after do |example|
           example.metadata[:response][:content] = {
             "application/json" => {
@@ -40,7 +44,9 @@ RSpec.describe "compras", type: :request do
     get("show compra") do
       tags "Compras"
       produces "application/json"
+      security [{ bearer_auth: [] }]
       response(200, "successful") do
+        let(:Authorization) { "Bearer #{usuarioInfo.token}" }
         let(:id) { @compraPrueba.id }
 
         run_test!

@@ -4,65 +4,6 @@ info:
   title: API V1
   version: v1
 paths:
-  "/carritos":
-    get:
-      summary: list carritos
-      tags:
-      - Carritos
-      responses:
-        '200':
-          description: successful
-  "/carritos/{id}":
-    parameters:
-    - name: id
-      in: path
-      description: id
-      required: true
-      schema:
-        type: string
-    get:
-      summary: show carrito
-      tags:
-      - Carritos
-      responses:
-        '200':
-          description: successful
-    delete:
-      summary: vacia el carrito y pasa las ordenes del carrito a compras
-      tags:
-      - Carritos
-      parameters: []
-      responses:
-        '204':
-          description: successful
-      requestBody:
-        content:
-          application/json:
-            schema:
-              "$ref": "#/components/schemas/carrito"
-  "/compras":
-    get:
-      summary: list compras
-      tags:
-      - Compras
-      responses:
-        '200':
-          description: successful
-  "/compras/{id}":
-    parameters:
-    - name: id
-      in: path
-      description: id
-      required: true
-      schema:
-        type: string
-    get:
-      summary: show compra
-      tags:
-      - Compras
-      responses:
-        '200':
-          description: successful
   "/auth/":
     post:
       summary: sign up usuario
@@ -110,7 +51,7 @@ paths:
       schema:
         type: string
     get:
-      summary: show one usuario
+      summary: show one usuario and info related
       tags:
       - Usuario
       security:
@@ -119,13 +60,82 @@ paths:
         '200':
           description: successful
     delete:
-      summary: delete producto
+      summary: delete usuario
       tags:
       - Usuario
       security:
       - bearer_auth: []
       responses:
         '204':
+          description: successful
+  "/carritos":
+    get:
+      summary: list carritos
+      tags:
+      - Carritos
+      security:
+      - bearer_auth: []
+      responses:
+        '200':
+          description: successful
+  "/carritos/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show carrito
+      tags:
+      - Carritos
+      security:
+      - bearer_auth: []
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: vacia el carrito y pasa las ordenes del carrito a compras
+      tags:
+      - Carritos
+      security:
+      - bearer_auth: []
+      parameters: []
+      responses:
+        '204':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/carrito"
+  "/compras":
+    get:
+      summary: list compras
+      tags:
+      - Compras
+      security:
+      - bearer_auth: []
+      responses:
+        '200':
+          description: successful
+  "/compras/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show compra
+      tags:
+      - Compras
+      security:
+      - bearer_auth: []
+      responses:
+        '200':
           description: successful
   "/ordenes":
     get:

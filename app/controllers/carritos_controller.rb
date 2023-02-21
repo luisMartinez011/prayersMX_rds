@@ -12,7 +12,7 @@ class CarritosController < ApplicationController
 
   # GET /carritos/1
   def show
-    render json: @carrito
+    render json: { data: @carrito, ordenes: @carrito.ordenes }
   end
 
   # POST /carritos
@@ -51,7 +51,7 @@ class CarritosController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_compra
-    @compra = Carrito.find_or_create_by(usuario_id: params[:usuario_id])
+    @compra = Usuario.find(params[:usuario_id]).compra
   end
 
   def set_carrito

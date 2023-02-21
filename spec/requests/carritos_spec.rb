@@ -1,5 +1,7 @@
 require "swagger_helper"
+require "requests/usuarios_spec"
 
+usuarioInfo = UsuarioInfo.new
 RSpec.describe "carritos", type: :request do
   before(:all) { @carritoPrueba = FactoryBot.create(:carrito_with_orders) }
 
@@ -7,7 +9,9 @@ RSpec.describe "carritos", type: :request do
     get("list carritos") do
       tags "Carritos"
       produces "application/json"
+      security [{ bearer_auth: [] }]
       response(200, "successful") do
+        let(:Authorization) { "Bearer #{usuarioInfo.token}" }
         after do |example|
           example.metadata[:response][:content] = {
             "application/json" => {
@@ -40,7 +44,9 @@ RSpec.describe "carritos", type: :request do
     get("show carrito") do
       tags "Carritos"
       produces "application/json"
+      security [{ bearer_auth: [] }]
       response(200, "successful") do
+        let(:Authorization) { "Bearer #{usuarioInfo.token}" }
         let(:id) { @carritoPrueba.id }
 
         run_test!
@@ -50,13 +56,14 @@ RSpec.describe "carritos", type: :request do
     delete("vacia el carrito y pasa las ordenes del carrito a compras") do
       tags "Carritos"
       consumes "application/json"
-      #security [{ bearer_auth: [] }]
+      security [{ bearer_auth: [] }]
       parameter name: :usuario_id,
                 in: :body,
                 schema: {
                   "$ref" => "#/components/schemas/carrito"
                 }
       response(204, "successful") do
+        let(:Authorization) { "Bearer #{usuarioInfo.token}" }
         let(:id) { @carritoPrueba.id }
         let(:usuario_id) { { usuario_id: @carritoPrueba.usuario_id } }
 

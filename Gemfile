@@ -56,6 +56,7 @@ group :test do
   gem 'faker'
 end
 
+gem 'faker'
 # swagger open api
 gem 'rspec-rails'
 gem 'rswag'

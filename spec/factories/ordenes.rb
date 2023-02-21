@@ -3,6 +3,6 @@ FactoryBot.define do
     producto
     carrito
     compra
-    cantidad { Faker::Number.number(digits: 2) }
+    cantidad { Faker::Number.between(from: 1, to: 100) }
   end
 end

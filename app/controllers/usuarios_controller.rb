@@ -9,7 +9,11 @@ class UsuariosController < ApplicationController
 
   # GET /usuarios/1
   def show
-    render json: @usuario
+    render json: {
+             usuario: @usuario,
+             carrito_id: @usuario.carrito.id,
+             compra_id: @usuario.compra.id
+           }
   end
   def destroy
     @usuario.destroy

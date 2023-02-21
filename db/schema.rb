@@ -10,31 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_18_235937) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_21_022306) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "carritos", force: :cascade do |t|
-    t.string "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "usuario_id"
+    t.float "total"
     t.index ["usuario_id"], name: "index_carritos_on_usuario_id"
   end
 
   create_table "compras", force: :cascade do |t|
-    t.string "total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "usuario_id"
+    t.float "total"
     t.index ["usuario_id"], name: "index_compras_on_usuario_id"
   end
 
   create_table "ordenes", force: :cascade do |t|
-    t.string "total"
-    t.string "cantidad"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "producto_id"
     t.integer "compra_id"
     t.integer "carrito_id"
+    t.integer "cantidad"
+    t.float "total"
     t.index ["carrito_id"], name: "index_ordenes_on_carrito_id"
     t.index ["compra_id"], name: "index_ordenes_on_compra_id"
     t.index ["producto_id"], name: "index_ordenes_on_producto_id"
