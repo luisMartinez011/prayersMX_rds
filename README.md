@@ -4,10 +4,24 @@ This is the same project of [PrayersMX](https://github.com/luisMartinez011/praye
 
 This project is for a final project.
 
+<h2>Future implemantations</h2>
+<ul>
+  <li>QR implementation</li>
+  <li>Email when purchase is done</li>
 
-<h2>General infrastructure</h2>
-![](https://user-images.githubusercontent.com/95190949/221456880-fb0048d1-df24-4729-91b1-0b812cbc6a70.png)
+</ul>
 
 <h2>Roles</h2>
+People with no account has access to these functions: 
 
-<h2>Future implemantations</h2>
+People with no account has access to these functions: 
+
+People with admin user have full access.
+<img src=https://user-images.githubusercontent.com/95190949/221460775-5e2070bf-c856-4dd1-aa79-76ff7fe7c810.png">
+
+<h2>General infrastructure</h2>
+<div style="text-align: center;">
+  <img src="https://user-images.githubusercontent.com/95190949/221456880-fb0048d1-df24-4729-91b1-0b812cbc6a70.png"  width="60%" height="10%" >
+</div>
+
+
