@@ -4,15 +4,18 @@ This is the same project of [PrayersMX](https://github.com/luisMartinez011/praye
 
 This project is for a final project.
 
-<h2>Future implemantations</h2>
-<ul>
-  <li>QR implementation. I am planning to send a random number as a code to the frontend, and from the frontend just download a QR package and convert the code in a QR </li>
-  <li>Email the user, when purchase is done</li>
-  <li>Endpoints with relevant info for the admin dashboard</li>
+# Index 
+* [General infrastructure](#general-infrastructure)
+* [Future implementations](#future-implementations)
+* [Roles](#roles)
 
-</ul>
+## General infrastructure 
+<div style="text-align: center;">
+  <img src="https://user-images.githubusercontent.com/95190949/221456880-fb0048d1-df24-4729-91b1-0b812cbc6a70.png"  width="60%" height="10%" >
+</div>
 
-<h2>Roles</h2>
+
+## Roles
 People with no account has access to these functions: 
 
   
@@ -28,11 +31,15 @@ People with user role has access to these functions:
 
 People with admin role have full access.
 
+## Future implementations
+<ul>
+  <li>QR implementation. I am planning to send a random number as a code to the frontend, and from the frontend just download a QR package and convert the code in a QR </li>
+  <li>Email the user, when purchase is done</li>
+  <li>Endpoints with relevant info for the admin dashboard</li>
+
+</ul>
 
 
-<h2>General infrastructure</h2>
-<div style="text-align: center;">
-  <img src="https://user-images.githubusercontent.com/95190949/221456880-fb0048d1-df24-4729-91b1-0b812cbc6a70.png"  width="60%" height="10%" >
-</div>
+
 
 
