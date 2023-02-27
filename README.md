@@ -9,6 +9,8 @@ This project is for a final project.
 * [Future implementations](#future-implementations)
 * [Roles](#roles)
 
+
+
 ## General infrastructure 
 <div style="text-align: center;">
   <img src="https://user-images.githubusercontent.com/95190949/221456880-fb0048d1-df24-4729-91b1-0b812cbc6a70.png"  width="60%" height="10%" >
@@ -16,6 +18,8 @@ This project is for a final project.
 
 
 ## Roles
+There are two roles "usuario" and "admin", you need to sign up to create an account and sign in to access the resources. The sign in endpoint return a token through the header, use this token to access all the resources. Admin role is disabled by default due security reasons.
+
 People with no account has access to these functions: 
 
   
