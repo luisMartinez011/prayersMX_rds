@@ -45,9 +45,4 @@ class ComprasController < ApplicationController
   def set_compra
     @compra = Compra.find(params[:id])
   end
-
-  # Only allow a list of trusted parameters through.
-  def compra_params
-    params.require(:compra).permit(:total)
-  end
 end

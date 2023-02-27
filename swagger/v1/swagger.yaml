@@ -17,7 +17,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/usuario"
+              "$ref": "#/components/schemas/new_usuario"
   "/auth/sign_in":
     post:
       summary: sign in usuario
@@ -31,7 +31,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/usuario"
+              "$ref": "#/components/schemas/new_usuario"
   "/usuarios":
     get:
       summary: list usuarios
@@ -51,7 +51,7 @@ paths:
       schema:
         type: string
     get:
-      summary: show one usuario and info related
+      summary: show current usuario
       tags:
       - Usuario
       security:
@@ -109,7 +109,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/carrito"
+              "$ref": "#/components/schemas/new_carrito"
   "/compras":
     get:
       summary: list compras
@@ -162,7 +162,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/ordene"
+              "$ref": "#/components/schemas/new_ordene"
   "/ordenes/{id}":
     parameters:
     - name: id
@@ -195,7 +195,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/ordene"
+              "$ref": "#/components/schemas/new_ordene"
     put:
       summary: update ordene
       tags:
@@ -210,7 +210,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/ordene"
+              "$ref": "#/components/schemas/new_ordene"
     delete:
       summary: delete ordene
       tags:
@@ -242,7 +242,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/producto"
+              "$ref": "#/components/schemas/new_producto"
   "/productos/{id}":
     parameters:
     - name: id
@@ -315,6 +315,21 @@ components:
       - email
       - password
       - name
+    new_usuario:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        name:
+          type: string
+        role:
+          type: string
+      required:
+      - email
+      - password
+      - name
     carrito:
       type: object
       properties:
@@ -326,6 +341,19 @@ components:
           type: array
           items:
             "$ref": "#/components/schemas/ordene"
+    new_carrito:
+      type: object
+      properties:
+        producto_id:
+          type: integer
+        usuario_id:
+          type: integer
+        uid:
+          type: string
+        required:
+        - producto_id
+        - usuario_id
+        - uid
     producto:
       type: object
       properties:
@@ -342,6 +370,24 @@ components:
       - precio
       - descripcion
       - imagen
+    new_producto:
+      type: object
+      properties:
+        nombre:
+          type: string
+        precio:
+          type: number
+        descripcion:
+          type: string
+        imagen:
+          type: string
+        uid:
+          type: string
+      required:
+      - nombre
+      - precio
+      - descripcion
+      - imagen
     compra:
       type: object
       properties:
@@ -351,6 +397,11 @@ components:
           type: array
           items:
             "$ref": "#/components/schemas/ordene"
+    new_compra:
+      type: object
+      properties:
+        uid:
+          type: string
     ordene:
       type: object
       properties:
@@ -362,6 +413,22 @@ components:
           type: integer
         producto:
           "$ref": "#/components/schemas/producto"
+    new_ordene:
+      type: object
+      properties:
+        cantidad:
+          type: integer
+        producto_id:
+          type: integer
+        usuario_id:
+          type: integer
+        uid:
+          type: integer
+      required:
+      - cantidad
+      - producto_id
+      - usuario_id
+      - uid
 servers:
 - url: https://secure-lowlands-54066.herokuapp.com/
   variables:

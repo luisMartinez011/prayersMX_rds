@@ -25,7 +25,7 @@ RSpec.describe "productos", type: :request do
       parameter name: :producto,
                 in: :body,
                 schema: {
-                  "$ref" => "#/components/schemas/producto"
+                  "$ref" => "#/components/schemas/new_producto"
                 }
       response(201, "successful") do
         let(:Authorization) { "Bearer #{usuarioInfo.token}" }

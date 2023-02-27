@@ -55,6 +55,24 @@ RSpec.configure do |config|
             },
             required: %w[email password name]
           },
+          new_usuario: {
+            type: :object,
+            properties: {
+              email: {
+                type: :string
+              },
+              password: {
+                type: :string
+              },
+              name: {
+                type: :string
+              },
+              role: {
+                type: :string
+              }
+            },
+            required: %w[email password name]
+          },
           carrito: {
             type: :object,
             properties: {
@@ -70,6 +88,21 @@ RSpec.configure do |config|
                   "$ref" => "#/components/schemas/ordene"
                 }
               }
+            }
+          },
+          new_carrito: {
+            type: :object,
+            properties: {
+              producto_id: {
+                type: :integer
+              },
+              usuario_id: {
+                type: :integer
+              },
+              uid: {
+                type: :string
+              },
+              required: %w[producto_id usuario_id uid]
             }
           },
           producto: {
@@ -90,6 +123,27 @@ RSpec.configure do |config|
             },
             required: %w[nombre precio descripcion imagen]
           },
+          new_producto: {
+            type: :object,
+            properties: {
+              nombre: {
+                type: :string
+              },
+              precio: {
+                type: :number
+              },
+              descripcion: {
+                type: :string
+              },
+              imagen: {
+                type: :string
+              },
+              uid: {
+                type: :string
+              }
+            },
+            required: %w[nombre precio descripcion imagen]
+          },
           compra: {
             type: :object,
             properties: {
@@ -101,6 +155,14 @@ RSpec.configure do |config|
                 items: {
                   "$ref" => "#/components/schemas/ordene"
                 }
+              }
+            }
+          },
+          new_compra: {
+            type: :object,
+            properties: {
+              uid: {
+                type: :string
               }
             }
           },
@@ -120,6 +182,24 @@ RSpec.configure do |config|
                 "$ref" => "#/components/schemas/producto"
               }
             }
+          },
+          new_ordene: {
+            type: :object,
+            properties: {
+              cantidad: {
+                type: :integer
+              },
+              producto_id: {
+                type: :integer
+              },
+              usuario_id: {
+                type: :integer
+              },
+              uid: {
+                type: :integer
+              }
+            },
+            required: %w[cantidad producto_id usuario_id uid]
           }
         }
       },

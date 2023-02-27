@@ -14,6 +14,7 @@ class OrdenesController < ApplicationController
 
   # GET /ordenes/1
   def show
+    @ordenes = Ordene.where(carrito_id: @carrito.id)
     render json: @ordene
   end
 
@@ -28,6 +29,7 @@ class OrdenesController < ApplicationController
     if @ordene.save
       @carrito.ordenes << @ordene
       @carrito.total = @carrito.ordenes.sum("total")
+      @carrito.save
       render json: @ordene, status: :created, location: @ordene
     else
       render json: @ordene.errors, status: :unprocessable_entity
@@ -37,6 +39,13 @@ class OrdenesController < ApplicationController
   # PATCH/PUT /ordenes/1
   def update
     if @ordene.update(ordene_params)
+      @ordene.producto_id << @producto.id
+
+      @ordene.total = @ordene.cantidad * @producto.precio
+      @ordene.save
+      @carrito.ordenes << @ordene
+      @carrito.total = @carrito.ordenes.sum("total")
+      @carrito.save
       render json: @ordene
     else
       render json: @ordene.errors, status: :unprocessable_entity
@@ -61,7 +70,8 @@ class OrdenesController < ApplicationController
   end
 
   def set_carrito
-    @carrito = Usuario.find(params[:usuario_id]).carrito
+    usuario_id = Usuario.where(uid: params[:uid]).first.id
+    @carrito = Usuario.find(usuario_id).carrito
   end
 
   # Only allow a list of trusted parameters through.

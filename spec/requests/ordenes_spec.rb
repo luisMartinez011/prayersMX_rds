@@ -12,7 +12,7 @@ RSpec.describe "ordenes", type: :request do
       parameter name: :ordene,
                 in: :body,
                 schema: {
-                  "$ref" => "#/components/schemas/ordene"
+                  "$ref" => "#/components/schemas/new_ordene"
                 }
       response(200, "successful") do
         let(:Authorization) { "Bearer #{usuarioInfo.token}" }
@@ -27,7 +27,7 @@ RSpec.describe "ordenes", type: :request do
       parameter name: :ordene,
                 in: :body,
                 schema: {
-                  "$ref" => "#/components/schemas/ordene"
+                  "$ref" => "#/components/schemas/new_ordene"
                 }
       response(201, "successful") do
         let(:Authorization) { "Bearer #{usuarioInfo.token}" }
@@ -60,7 +60,7 @@ RSpec.describe "ordenes", type: :request do
       parameter name: :ordene,
                 in: :body,
                 schema: {
-                  "$ref" => "#/components/schemas/ordene"
+                  "$ref" => "#/components/schemas/new_ordene"
                 }
       response(200, "successful") do
         let(:Authorization) { "Bearer #{usuarioInfo.token}" }
@@ -84,7 +84,7 @@ RSpec.describe "ordenes", type: :request do
       parameter name: :ordene,
                 in: :body,
                 schema: {
-                  "$ref" => "#/components/schemas/ordene"
+                  "$ref" => "#/components/schemas/new_ordene"
                 }
       response(200, "successful") do
         let(:Authorization) { "Bearer #{usuarioInfo.token}" }
@@ -109,7 +109,7 @@ RSpec.describe "ordenes", type: :request do
       parameter name: :ordene,
                 in: :body,
                 schema: {
-                  "$ref" => "#/components/schemas/ordene"
+                  "$ref" => "#/components/schemas/new_ordene"
                 }
       response(200, "successful") do
         let(:Authorization) { "Bearer #{usuarioInfo.token}" }

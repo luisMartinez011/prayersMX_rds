@@ -60,7 +60,7 @@ RSpec.describe "carritos", type: :request do
       parameter name: :usuario_id,
                 in: :body,
                 schema: {
-                  "$ref" => "#/components/schemas/carrito"
+                  "$ref" => "#/components/schemas/new_carrito"
                 }
       response(204, "successful") do
         let(:Authorization) { "Bearer #{usuarioInfo.token}" }

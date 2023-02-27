@@ -20,7 +20,7 @@ RSpec.describe "usuarios", type: :request do
       parameter name: :new_usuario,
                 in: :body,
                 schema: {
-                  "$ref" => "#/components/schemas/usuario"
+                  "$ref" => "#/components/schemas/new_usuario"
                 }
 
       response(200, "successful") do
@@ -43,7 +43,7 @@ RSpec.describe "usuarios", type: :request do
       parameter name: :new_usuario,
                 in: :body,
                 schema: {
-                  "$ref" => "#/components/schemas/usuario"
+                  "$ref" => "#/components/schemas/new_usuario"
                 }
 
       response(200, "successful") do
@@ -80,7 +80,7 @@ RSpec.describe "usuarios", type: :request do
               type: :string,
               description: "id del producto"
 
-    get("show one usuario and info related") do
+    get("show current usuario") do
       tags "Usuario"
       produces "application/json"
       security [{ bearer_auth: [] }]
