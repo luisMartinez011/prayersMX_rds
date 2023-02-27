@@ -5,7 +5,7 @@ This is the same project of [PrayersMX](https://github.com/luisMartinez011/praye
 This project is for a final project.
 
 
-<h2Roles</h2>
-<h2Roles</h2>
+<h2>Roles</h2>
+<h2>Roles</h2>
 
-<h2Future implemantations</h2>
+<h2>Future implemantations</h2>
