@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the same project of [PrayersMX](https://github.com/luisMartinez011/prayersMX) but it uses AWS RDS service with Postgres. I was having compatibility problems with gems that were designed for [Mongoid gem](https://github.com/mongodb/mongoid), but some gems were outdated or had horrible documentation. I become exhausted so I decided to switch back to using RDS databases. Another reason for leaving the other project is that Mongoid does not use ActiveRecord, and most gems compatible with Ruby on Rails use ActiveRecord.
 
-Things you may want to cover:
+This project is for a final project.
 
-* Ruby version
 
-* System dependencies
+<h2>General infrastructure</h2>
+<h2>Roles</h2>
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<h2>Future implemantations</h2>
