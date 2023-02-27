@@ -6,6 +6,7 @@ This project is for a final project.
 
 
 <h2>General infrastructure</h2>
+![](https://user-images.githubusercontent.com/95190949/221456880-fb0048d1-df24-4729-91b1-0b812cbc6a70.png)
 
 <h2>Roles</h2>
 
