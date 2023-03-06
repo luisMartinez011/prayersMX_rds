@@ -10,7 +10,7 @@ class Usuario < ActiveRecord::Base
          :rememberable,
          :validatable
   include DeviseTokenAuth::Concerns::User
-  enum role: { usuario: 0, admin: 1 }, _prefix: true
+  enum rol: { usuario: 0, admin: 1 }, _prefix: true
 
   has_one :carrito
   has_many :compras
@@ -26,6 +26,6 @@ class Usuario < ActiveRecord::Base
 
   def create_relationships
     self.carrito = Carrito.create
-    self.compra = Compra.create
+    self.compras << Compra.create
   end
 end

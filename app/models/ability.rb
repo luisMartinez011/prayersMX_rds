@@ -13,7 +13,7 @@ class Ability
     can :show, Compra
     can %i[show destroy], Carrito
 
-    return unless usuario.role_admin?
+    return unless usuario.rol_admin?
     can :manage, :all
     # Define abilities for the user here. For example:
     #

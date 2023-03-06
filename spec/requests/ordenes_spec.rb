@@ -20,7 +20,7 @@ RSpec.describe "ordenes", type: :request do
       end
     end
 
-    post("create orden and assigns it to a carrito") do
+    post("se crean ordenes y se les asigna a un carrito") do
       tags "Orden"
       consumes "application/json"
       security [{ bearer_auth: [] }]
@@ -77,7 +77,7 @@ RSpec.describe "ordenes", type: :request do
       end
     end
 
-    patch("update orden") do
+    patch("Se edita una orden del carrito del usuario") do
       tags "Orden"
       consumes "application/json"
       security [{ bearer_auth: [] }]

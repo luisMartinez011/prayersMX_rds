@@ -45,8 +45,17 @@ class CarritosController < ApplicationController
       d = Date.parse(3.days.from_now.to_s)
       @compra.entrega = d.strftime("%d/%m/%Y")
       @carrito.ordenes = []
-
-      CompraMailer.with(usuario: @usuario, compra: @compra).new_order_email
+      @compra.save
+      CompraMailer
+        .with(usuario: @usuario, compra: @compra)
+        .new_order_email
+        .deliver_later
+      render json: {
+               mensaje: "Email de confirmacion enviado",
+               total: @compra.total,
+               qrcode: @compra.entrega,
+               entrega: @compra.entrega
+             }
     else
       render json: "Carrito is already empty", status: :unprocessable_entity
     end
@@ -56,7 +65,8 @@ class CarritosController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_compra
-    @compra = Usuario.find(params[:usuario_id]).compras.last
+    usuario_id = Usuario.where(uid: params[:uid]).first.id
+    @compra = Usuario.find(usuario_id).compras.last
   end
 
   def set_carrito
@@ -64,11 +74,12 @@ class CarritosController < ApplicationController
   end
 
   def set_usuario
-    @usuario = Usuario.find(params[:usuario_id])
+    usuario_id = Usuario.where(uid: params[:uid]).first.id
+    @usuario = Usuario.find(usuario_id)
   end
 
   #Only allow a list of trusted parameters through.
   def carrito_params
-    params.require(:carrito).permit(:usuario_id)
+    params.require(:carrito).permit()
   end
 end

@@ -65,13 +65,26 @@ RSpec.configure do |config|
                 type: :string
               },
               carrito: {
+                :type => :array,
                 "$ref" => "#/components/schemas/carrito"
               },
               compra: {
                 "$ref" => "#/components/schemas/compra"
               }
             },
-            required: %w[email password name]
+            required: %w[
+              email
+              password
+              nombre
+              numero_casa
+              telefono
+              calle
+              ciudad
+              estado
+              pais
+              carrito
+              compra
+            ]
           },
           new_usuario: {
             type: :object,
@@ -85,7 +98,7 @@ RSpec.configure do |config|
               name: {
                 type: :string
               },
-              role: {
+              rol: {
                 type: :string
               }
             },
