@@ -6,16 +6,28 @@ This project is for a final project.
 
 # Index 
 * [General infrastructure](#general-infrastructure)
-* [Future implementations](#future-implementations)
+* [Email service](#email-service)
 * [Roles](#roles)
+* [Future implementations](#future-implementations)
+
 
 
 
 ## General infrastructure 
+The project is a simple e-commerce platform that features a robust backend built in Ruby on Rails. The backend utilizes AWS RDS Postgres as the database, providing a reliable and scalable data storage solution. Additionally, AWS SES is used as a mailer, ensuring that customers receive timely notifications about their orders.
+
+The backend is deployed on Heroku, providing high availability and fast response times. On the frontend side, React is used to create a modern and intuitive user interface. However, the admin interface is built in React and Electron, giving administrators the option to select either a web-based or desktop-based interface.
+
+To ensure seamless deployment and scalability, the frontend webpage is deployed in AWS Amplify. The combination of these technologies creates a powerful and user-friendly e-commerce platform that is capable of meeting the needs of both customers and administrators alike.
 <div style="text-align: center;">
-  <img src="https://user-images.githubusercontent.com/95190949/221456880-fb0048d1-df24-4729-91b1-0b812cbc6a70.png"  width="60%" height="10%" >
+  <img src="https://user-images.githubusercontent.com/95190949/223038557-35add4bf-574a-4831-94f3-05d3c33a7468.png"  width="60%" height="10%" >
 </div>
 
+## Email service 
+Using AWS SES ensures that emails are delivered reliably and securely, with built-in safeguards to prevent spam and phishing attempts. The service is also highly scalable, ensuring that businesses can easily send emails to a large number of customers without worrying about performance issues.
+
+The email templates are designed to be both informative and visually appealing, with a clean and modern layout that makes it easy for customers to quickly find the information they need. Whether you are a small business just getting started or a large enterprise with a global customer base, this email service is the perfect solution for keeping your customers informed and engaged.
+<img src="https://user-images.githubusercontent.com/95190949/223040630-68f60857-8f50-4c27-9cce-4ed8af5cb09e.png" width=500>
 
 ## Roles
 There are two roles "usuario" and "admin", you need to sign up to create an account and sign in to access the resources. The sign in endpoint return a token through the header, use this token to access all the resources. Admin role is disabled by default due security reasons.
@@ -37,8 +49,6 @@ People with admin role have full access.
 
 ## Future implementations
 <ul>
-  <li>QR implementation. I am planning to send a random number as a code to the frontend, and from the frontend just download a QR package and convert the code in a QR </li>
-  <li>Email the user, when purchase is done</li>
   <li>Endpoints with relevant info for the admin dashboard</li>
 
 </ul>
