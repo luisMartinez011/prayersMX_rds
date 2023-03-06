@@ -82,7 +82,7 @@ paths:
     parameters:
     - name: id
       in: path
-      description: id
+      description: id del carrito
       required: true
       schema:
         type: string
@@ -96,7 +96,8 @@ paths:
         '200':
           description: successful
     delete:
-      summary: vacia el carrito y pasa las ordenes del carrito a compras
+      summary: vacia el carrito y pasa las ordenes del carrito a compras, tambien
+        envia un email de confirmacion de compra
       tags:
       - Carritos
       security:
@@ -129,7 +130,7 @@ paths:
       schema:
         type: string
     get:
-      summary: show compra
+      summary: muesta una compra especifica
       tags:
       - Compras
       security:
@@ -149,7 +150,7 @@ paths:
         '200':
           description: successful
     post:
-      summary: create orden and assigns it to a carrito
+      summary: se crean ordenes y se les asigna a un carrito
       tags:
       - Orden
       security:
@@ -182,7 +183,7 @@ paths:
         '200':
           description: successful
     patch:
-      summary: update orden
+      summary: Se edita una orden del carrito del usuario
       tags:
       - Orden
       security:
@@ -303,18 +304,39 @@ components:
           type: string
         password:
           type: string
-        name:
+        nombre:
           type: string
-        role:
+        rol:
+          type: string
+        numero_casa:
+          type: integer
+        telefono:
+          type: integer
+        calle:
+          type: string
+        ciudad:
+          type: string
+        estado:
+          type: string
+        pais:
           type: string
         carrito:
+          type: array
           "$ref": "#/components/schemas/carrito"
         compra:
           "$ref": "#/components/schemas/compra"
       required:
       - email
       - password
-      - name
+      - nombre
+      - numero_casa
+      - telefono
+      - calle
+      - ciudad
+      - estado
+      - pais
+      - carrito
+      - compra
     new_usuario:
       type: object
       properties:
@@ -324,7 +346,7 @@ components:
           type: string
         name:
           type: string
-        role:
+        rol:
           type: string
       required:
       - email
@@ -393,6 +415,8 @@ components:
       properties:
         total:
           type: number
+        entrega:
+          type: string
         orders:
           type: array
           items:
