@@ -14,7 +14,7 @@ class UsuariosController < ApplicationController
     render json: {
              usuario: @usuario,
              carrito_id: @usuario.carrito.id,
-             dinero_gastado: @usuario.compras.sum("total")
+             dinero_gastado: @usuario.compras.sum("total"),
              compras: @usuario.compras
            }
   end
