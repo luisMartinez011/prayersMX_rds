@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Gracias por comprar con nosotros</p>
+
+ <p>
+    Detalles de la compra<br>
+    --------------------------
+    </p>
+    <p>Nombre: <%= @usuario.nombre %></p>
+    <p>Email: <%= @usuario.email %></p>
+    <p>Direccion: <%= @usuario.numero_casa %> <%= @usuario.calle %>, <%= @usuario.estado %>,
+    <%= @usuario.pais %>. </p>
+    <p>Telefono del usuario: <%= @usuario.telefono %></p>
+    <p>Fecha de entrega: <%= @compra.entrega %> </p>
+    <p>
+    Total:<br>
+    ----------
+    </p>
+ <p><%= @compra.total %></p>
+
+
+  </body>
+</html>

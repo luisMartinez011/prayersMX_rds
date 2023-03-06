@@ -1,6 +1,7 @@
 class CarritosController < ApplicationController
   before_action :set_carrito, only: %i[show update destroy]
   before_action :set_compra, only: %i[destroy]
+  before_action :set_usuario, only: %i[destroy]
   before_action :authenticate_usuario!
   load_and_authorize_resource
   # GET /carritos
@@ -41,7 +42,11 @@ class CarritosController < ApplicationController
     if @carrito.ordenes.exists?
       @compra.ordenes << @carrito.ordenes
       @compra.total = @compra.ordenes.sum("total")
+      d = Date.parse(3.days.from_now.to_s)
+      @compra.entrega = d.strftime("%d/%m/%Y")
       @carrito.ordenes = []
+
+      CompraMailer.with(usuario: @usuario, compra: @compra).new_order_email
     else
       render json: "Carrito is already empty", status: :unprocessable_entity
     end
@@ -51,11 +56,15 @@ class CarritosController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_compra
-    @compra = Usuario.find(params[:usuario_id]).compra
+    @compra = Usuario.find(params[:usuario_id]).compras.last
   end
 
   def set_carrito
     @carrito = Carrito.find(params[:id])
+  end
+
+  def set_usuario
+    @usuario = Usuario.find(params[:usuario_id])
   end
 
   #Only allow a list of trusted parameters through.

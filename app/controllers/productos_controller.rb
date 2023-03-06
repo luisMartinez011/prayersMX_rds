@@ -5,7 +5,7 @@ class ProductosController < ApplicationController
   # GET /productos
   def index
     @productos = Producto.all
-
+    CompraMailer.new_order_email.deliver_later
     render json: @productos
   end
 

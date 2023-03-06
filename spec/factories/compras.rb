@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :compra do
     total { Faker::Number.decimal(l_digits: 2) }
+    entrega { Faker::Date.forward(days: 23) }
     usuario
     factory :compra_with_orders do
       # posts_count is declared as a transient attribute available in the

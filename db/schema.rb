@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_21_022306) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_06_012914) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,6 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_21_022306) do
     t.datetime "updated_at", null: false
     t.integer "usuario_id"
     t.float "total"
+    t.string "entrega"
     t.index ["usuario_id"], name: "index_compras_on_usuario_id"
   end
 
@@ -65,15 +66,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_21_022306) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.string "name"
-    t.string "nickname"
-    t.string "image"
     t.string "email"
     t.text "tokens"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "role", default: 0
     t.integer "usuario_id"
+    t.string "nombre"
+    t.string "imagen"
+    t.integer "rol", default: 0
+    t.string "calle"
+    t.string "ciudad"
+    t.string "estado"
+    t.string "pais"
+    t.integer "numero_casa"
+    t.integer "telefono"
     t.index ["confirmation_token"], name: "index_usuarios_on_confirmation_token", unique: true
     t.index ["email"], name: "index_usuarios_on_email", unique: true
     t.index ["reset_password_token"], name: "index_usuarios_on_reset_password_token", unique: true

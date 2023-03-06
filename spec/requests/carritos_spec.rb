@@ -53,7 +53,9 @@ RSpec.describe "carritos", type: :request do
       end
     end
 
-    delete("vacia el carrito y pasa las ordenes del carrito a compras") do
+    delete(
+      "vacia el carrito y pasa las ordenes del carrito a compras, tambien envia un email de confirmacion de compra"
+    ) do
       tags "Carritos"
       consumes "application/json"
       security [{ bearer_auth: [] }]

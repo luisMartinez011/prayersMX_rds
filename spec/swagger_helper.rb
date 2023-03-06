@@ -40,10 +40,28 @@ RSpec.configure do |config|
               password: {
                 type: :string
               },
-              name: {
+              nombre: {
                 type: :string
               },
-              role: {
+              rol: {
+                type: :string
+              },
+              numero_casa: {
+                type: :integer
+              },
+              telefono: {
+                type: :integer
+              },
+              calle: {
+                type: :string
+              },
+              ciudad: {
+                type: :string
+              },
+              estado: {
+                type: :string
+              },
+              pais: {
                 type: :string
               },
               carrito: {
@@ -149,6 +167,9 @@ RSpec.configure do |config|
             properties: {
               total: {
                 type: :number
+              },
+              entrega: {
+                type: :string
               },
               orders: {
                 type: :array,
