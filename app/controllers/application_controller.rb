@@ -7,7 +7,7 @@ class ApplicationController < ActionController::API
     render json: {
              warning: exception,
              status:
-               "Este usuario no tiene el rol correcto para usar esta funcion"
+               "Este usuario no tiene el rol correcto para usar esta funcion."
            }
   end
 
