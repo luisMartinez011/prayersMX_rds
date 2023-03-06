@@ -7,6 +7,7 @@ This project is for a final project.
 # Index 
 * [General infrastructure](#general-infrastructure)
 * [Email service](#email-service)
+* [QR Code](#qr-code)
 * [Roles](#roles)
 * [Future implementations](#future-implementations)
 
