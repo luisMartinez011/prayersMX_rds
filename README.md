@@ -28,6 +28,7 @@ To ensure seamless deployment and scalability, the frontend webpage is deployed 
 Using AWS SES ensures that emails are delivered reliably and securely, with built-in safeguards to prevent spam and phishing attempts. The service is also highly scalable, ensuring that businesses can easily send emails to a large number of customers without worrying about performance issues.
 
 The email templates are designed to be both informative and visually appealing, with a clean and modern layout that makes it easy for customers to quickly find the information they need. Whether you are a small business just getting started or a large enterprise with a global customer base, this email service is the perfect solution for keeping your customers informed and engaged.
+
 <img src="https://user-images.githubusercontent.com/95190949/223040630-68f60857-8f50-4c27-9cce-4ed8af5cb09e.png" width=500>
 
 ## QR code 
